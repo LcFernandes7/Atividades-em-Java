@@ -36,7 +36,6 @@ public class MediaAritimetica {
         }
 
         double media = (n1 + n2) / 2.0;
-        JOptionPane.showMessageDialog(null, "Sua média foi: " + media);
-
+        JOptionPane.showMessageDialog(null, nome + " sua média foi: " + media);
     }
 }
