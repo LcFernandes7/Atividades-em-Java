@@ -2,29 +2,23 @@ package Classes;
 
 import javax.swing.*;
 
-import static java.util.stream.DoubleStream.builder;
-
-public class NumeroInvertido {
+public class NumeroInvertido extends Operacao {
     StringBuilder numeroBuilder;
     String numeroInvertido;
     StringBuilder builder = new StringBuilder();
 
-    public void invercao() {
-
-
+    @Override
+    public void executar() {
         while (true) {
             String numero = JOptionPane.showInputDialog("Digite apenas 3 números");
-            if (numero != null && numero.matches("\\d+")) {
+            if (numero != null && numero.matches("\\d{3}")) {
                 numeroBuilder = builder.append(numero);
                 numeroInvertido = numeroBuilder.reverse().toString();
-
                 JOptionPane.showMessageDialog(null, "O número digitado pelo usuário " + numero + ", invertido ficaria: " + numeroInvertido);
                 break;
             } else {
                 JOptionPane.showMessageDialog(null, "Digite apenas números inteiros.");
             }
         }
-
-
     }
 }

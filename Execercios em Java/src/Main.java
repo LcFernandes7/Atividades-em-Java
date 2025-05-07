@@ -1,7 +1,4 @@
-import Classes.MediaAritimetica;
-import Classes.NumeroInvertido;
-import Classes.NumeroPositivoOuNegativo;
-import Classes.PulverizacaoDeLavoura;
+import Classes.*;
 
 import javax.swing.*;
 
@@ -27,17 +24,18 @@ public class Main {
             );
 
 
-
             if (opcao.matches("\\d+")) {
                 numeroDaOpcao = Integer.parseInt(opcao);
 
-                switch (numeroDaOpcao){
+                Operacao operacao = null;
+
+                switch (numeroDaOpcao) {
                     case 1:
-                        media.formula();
+                        operacao = new MediaAritimetica();
                         break;
 
                     case 2:
-                        nun.invercao();
+                        operacao = new NumeroInvertido();
                         break;
 
                     case 3:
@@ -52,6 +50,7 @@ public class Main {
                         break;
 
                     case 6:
+                        System.exit(0);
                         break;
 
                     default:
@@ -59,8 +58,13 @@ public class Main {
                         break;
 
                 }
+
+                if (opcao != null) {
+                    operacao.executar();
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Digite uma opção válida!");
             }
-            break;
         }
     }
 }

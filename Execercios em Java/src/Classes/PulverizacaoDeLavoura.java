@@ -10,11 +10,7 @@ public class PulverizacaoDeLavoura {
 
     public void tipoDePulverizacao() {
 
-        while (true) {
-            nome = JOptionPane.showInputDialog("Digite seu nome: ");
-            if (nome.matches("[a-zA-Z\\s]+")) break;
-            JOptionPane.showMessageDialog(null, "Digite um nome válido!");
-        }
+
 
         while (true) {
             opcao = JOptionPane.showInputDialog("Bem vindo " + nome + "!\n" + "Escolha qual pacote você gostaria: \n\n" +
