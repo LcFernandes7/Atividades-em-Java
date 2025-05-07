@@ -10,7 +10,8 @@ public class NumeroInvertido extends Operacao {
     @Override
     public void executar() {
         while (true) {
-            String numero = JOptionPane.showInputDialog("Digite apenas 3 números");
+            String numero = JOptionPane.showInputDialog("Bem vindo " + nome + " digite apenas 3 números: ");
+
             if (numero != null && numero.matches("\\d{3}")) {
                 numeroBuilder = builder.append(numero);
                 numeroInvertido = numeroBuilder.reverse().toString();

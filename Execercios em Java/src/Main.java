@@ -13,6 +13,14 @@ public class Main {
         int numeroDaOpcao;
 
 
+            String nomeUsuario = JOptionPane.showInputDialog("Digite seu nome: ");
+
+
+
+
+
+
+
         while (true) {
             String opcao = JOptionPane.showInputDialog(
                     "1-) Media aritimética\n" +
@@ -39,11 +47,11 @@ public class Main {
                         break;
 
                     case 3:
-                        positiNegativo.valiacaoNumero();
+                        operacao = new NumeroPositivoOuNegativo();
                         break;
 
                     case 4:
-                        lavoura.tipoDePulverizacao();
+                        operacao = new PulverizacaoDeLavoura();
                         break;
 
                     case 5:
@@ -59,8 +67,12 @@ public class Main {
 
                 }
 
-                if (opcao != null) {
+
+
+                if (opcao != null && nomeUsuario.matches("[A-Za-zá-úÁ-ÚãõÃÕçÇ\\s]+")) {
+                    operacao.setNome(nomeUsuario);
                     operacao.executar();
+
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Digite uma opção válida!");

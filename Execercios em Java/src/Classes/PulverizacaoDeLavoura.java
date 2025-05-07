@@ -3,15 +3,13 @@ package Classes;
 import javax.swing.*;
 import java.awt.color.ICC_ColorSpace;
 
-public class PulverizacaoDeLavoura {
-    String nome, opcao;
+public class PulverizacaoDeLavoura extends Operacao {
+    String opcao;
     int intAcre, opcaoInt;
-    double valorDoDescontoDe5, valorDoDescontoDe10, valorComDescontoDe5, valorFinal;
+    double valorDoDescontoDe5 = 0, valorDoDescontoDe10 = 0, valorComDescontoDe5 = 0, valorFinal = 0;
 
-    public void tipoDePulverizacao() {
-
-
-
+    @Override
+    public void executar() {
         while (true) {
             opcao = JOptionPane.showInputDialog("Bem vindo " + nome + "!\n" + "Escolha qual pacote você gostaria: \n\n" +
                     "1-) Ervas daninhas R$50,00 por acre\n" +
@@ -43,30 +41,35 @@ public class PulverizacaoDeLavoura {
 
         switch (opcaoInt) {
             case 1:
-//              VALIDAÇÃO DO DESCONTO DE 5%
+                double valor = calculos.calcularValorPorUnidade(intAcre, 50.0);
+
                 if (intAcre >= 1000) {
-                    valorDoDescontoDe5 = valorAcreMultiplicado50 * 5.00 / 100;
+                    valorDoDescontoDe5 = calculos.aplicarDesconto(valor, 5);
                 }
-                valorComDescontoDe5 = valorAcreMultiplicado50 - valorDoDescontoDe5;
+
+                valorComDescontoDe5 = valor - valorDoDescontoDe5;
 
 //              VALIDAÇÃO DOS 10%
                 if (valorComDescontoDe5 >= 750.00) {
-                    valorDoDescontoDe10 = valorComDescontoDe5 * 10.00 / 100;
+                    valorDoDescontoDe10 = calculos.aplicarDesconto(valorComDescontoDe5, 10);
                 }
+
                 valorFinal = valorComDescontoDe5 - valorDoDescontoDe10;
                 JOptionPane.showMessageDialog(null, nome + ", o valor final para a pulverização da sua lavoura ficou em R$: " + valorFinal + "."+
                         "\n- Pacote Ervas Daninhas;");
                 break;
 
             case 2:
+                valor = calculos.calcularValorPorUnidade(intAcre, 100.0);
                 if (intAcre >= 1000) {
-                    valorDoDescontoDe5 = valorAcreMultiplicado100 * 5.00 / 100;
+                    valorDoDescontoDe5 = calculos.aplicarDesconto(valor, 5.0);
                 }
-                valorComDescontoDe5 = valorAcreMultiplicado100 - valorDoDescontoDe5;
+
+                valorComDescontoDe5 = valor - valorDoDescontoDe5;
 
 //              VALIDAÇÃO DOS 10%
                 if (valorComDescontoDe5 >= 750.00) {
-                    valorDoDescontoDe10 = valorComDescontoDe5 * 10.00 / 100;
+                    valorDoDescontoDe10 = calculos.aplicarDesconto(valorComDescontoDe5, 10.0);
                 }
                 valorFinal = valorComDescontoDe5 - valorDoDescontoDe10;
                 JOptionPane.showMessageDialog(null, nome + ", o valor final para a pulverização da sua lavoura ficou em R$: " + valorFinal + "." +
@@ -75,14 +78,15 @@ public class PulverizacaoDeLavoura {
 
 
             case 3:
+                valor = calculos.calcularValorPorUnidade(intAcre, 150.0);
                 if (intAcre >= 1000) {
-                    valorDoDescontoDe5 = valorAcreMultiplicado150 * 5.00 / 100;
+                    valorDoDescontoDe5 = calculos.aplicarDesconto(valor, 5.0);
                 }
-                valorComDescontoDe5 = valorAcreMultiplicado150 - valorDoDescontoDe5;
+                valorComDescontoDe5 = valor - valorDoDescontoDe5;
 
 //              VALIDAÇÃO DOS 10%
                 if (valorComDescontoDe5 >= 750.00) {
-                    valorDoDescontoDe10 = valorComDescontoDe5 * 10.00 / 100;
+                    valorDoDescontoDe10 = calculos.aplicarDesconto(valorComDescontoDe5, 10.0);
                 }
                 valorFinal = valorComDescontoDe5 - valorDoDescontoDe10;
                 JOptionPane.showMessageDialog(null, nome + ", o valor final para a pulverização da sua lavoura ficou em R$: " + valorFinal + "." +
@@ -91,14 +95,15 @@ public class PulverizacaoDeLavoura {
 
 
             case 4:
+                valor = calculos.calcularValorPorUnidade(intAcre, 250.0);
                 if (intAcre >= 1000) {
-                    valorDoDescontoDe5 = valorAcreMultiplicado250 * 5.00 / 100;
+                    valorDoDescontoDe5 = calculos.aplicarDesconto(valor, 5.0);
                 }
                 valorComDescontoDe5 = valorAcreMultiplicado250 - valorDoDescontoDe5;
 
 //              VALIDAÇÃO DOS 10%
                 if (valorComDescontoDe5 >= 750.00) {
-                    valorDoDescontoDe10 = valorComDescontoDe5 * 10.00 / 100;
+                    valorDoDescontoDe10 = calculos.aplicarDesconto(valorComDescontoDe5, 10.0);
                 }
                 valorFinal = valorComDescontoDe5 - valorDoDescontoDe10;
                 JOptionPane.showMessageDialog(null, nome + ", o valor final para a pulverização da sua lavoura ficou em R$: " + valorFinal + "." +
